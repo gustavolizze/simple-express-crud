@@ -1,8 +1,8 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
-const { CPF } = require('./../../../../src/api/cpf/cpf-model');
+const { CPF } = require('./../../../../src/shared/models/cpf');
 
-describe('Testes unitários com o "cpf-model.js"', () => {
+describe('Testes unitários com o "cpf.js"', () => {
 
     //232.817.730-10
 

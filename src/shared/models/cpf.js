@@ -1,4 +1,4 @@
-const { isValidCpf, removeMasks } = require('./../../shared/helpers/cpf-validator'); 
+const { isValidCpf, removeMasks } = require('./../helpers/cpf-validator'); 
 
 class CPF {
 
