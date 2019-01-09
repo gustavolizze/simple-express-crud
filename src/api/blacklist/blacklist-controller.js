@@ -31,12 +31,12 @@ class BlacklistController {
 
     addOnBlacklist(request, response) {
         this.service.add(request.body.number);
-        return response.status(StatusCode.Created);
+        return response.status(StatusCode.Created).end();
     }
 
     removeFromBlacklist(request, response) {
         this.service.remove(request.body.number);
-        return response.status(StatusCode.NoContent);
+        return response.status(StatusCode.NoContent).end();
     }
 }
 
