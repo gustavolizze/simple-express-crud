@@ -3,12 +3,14 @@ const colors = require('colors/safe');
 const {
     configureExpress,
     configureHealthCheck,
-    configureMiddlewares
+    configureMiddlewares,
+    configureErrorHandler
 } = require('./config');
 
-configureExpress(app);
 configureMiddlewares(app);
+configureExpress(app);
 configureHealthCheck(app);
+configureErrorHandler(app);
 
 module.exports = app.listen(process.env.port || 3000, () => {
     console.log(
