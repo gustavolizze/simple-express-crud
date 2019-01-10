@@ -12,12 +12,12 @@ describe('Testes unitários do "configure-error-handler.js"', () => {
     beforeEach(() => {
         this.request = mockReq();
         this.response = mockRes();
-        
+        this.next = () => {};
         chai.spy.on(this.response, ['status', 'json']);
     });
 
     it('Deve retornar o erro padrão', () => {
-        errorHandler(new Error('Deu Ruim !'), this.request, this.response);
+        errorHandler(new Error('Deu Ruim !'), this.request, this.response, this.next);
 
         expect(this.response.status).to.be.called.with(500);
         expect(this.response.json).to.deep.called.with({
@@ -28,7 +28,7 @@ describe('Testes unitários do "configure-error-handler.js"', () => {
 
     it('Deve retornar um erro customizado', () => {
         const error = new ConflictError('Já existente na base de dados!', { number: '259.268.440-96' }); 
-        errorHandler(error, this.request, this.response);
+        errorHandler(error, this.request, this.response, this.next);
 
         expect(this.response.status).to.be.called.with(error.status);
         expect(this.response.json).to.deep.called.with({

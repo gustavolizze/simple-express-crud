@@ -1,6 +1,7 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
 const { buildDigit, buildCpf, removeMasks, isValidCpf } = require('./../../../../src/shared/helpers/cpf-validator');
+const { BadRequestError } = require('./../../../../src/shared/errors');
 
 describe('Testes unitários do arquivo "cpf.validator.js"', () => {
     
@@ -27,6 +28,6 @@ describe('Testes unitários do arquivo "cpf.validator.js"', () => {
     });
 
     it('Deve retornar um erro em caso de cpf inválido', () => {
-        expect(isValidCpf).to.throw();
+        expect(isValidCpf).to.throw(BadRequestError, 'O cpf deve ser uma string válida');
     });
 });

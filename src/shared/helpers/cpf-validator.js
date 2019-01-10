@@ -1,6 +1,9 @@
 const {
     RegexMasks
 } = require('./regex-masks');
+const {
+    BadRequestError
+} = require('./../errors');
 
 const buildDigit = (values) => {
     const digit = values
@@ -25,12 +28,12 @@ const removeMasks = (cpf) => {
 
 const isValidCpf = (cpf) => {
     if (typeof(cpf) !== 'string')
-        throw new Error('O cpf deve ser uma string válida');
+        throw new BadRequestError('O cpf deve ser uma string válida');
     
     const cpfWithoutMask = removeMasks(cpf);
 
     if (cpfWithoutMask.length !== 11)
-        throw new Error('Informe um CPF válido.');
+        throw new BadRequestError('Informe um CPF válido.');
 
     return cpfWithoutMask === buildCpf(cpfWithoutMask);
 };
