@@ -1,0 +1,26 @@
+.paper {
+    position: relative;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: var(--strong-shadow);
+    color: var(--text);
+    background-image: var(--paper-background);
+}
+
+.paper::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 155px;
+    height: 50px;
+    top: 11px;
+    left: -43px;
+    background-color: var(--paper-lines-color);
+    border-left: 2px dotted var(--main);
+    border-right: 2px dotted var(--main);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+

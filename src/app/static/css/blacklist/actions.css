@@ -1,0 +1,70 @@
+.actions {
+    padding: 10px 0;
+}
+
+.actions .search-input {
+    font-family: var(--body-font);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1em;
+    color: var(--text);
+    border: none;
+    width: 100%;
+    background: transparent;
+}
+
+.actions .search-input:first-line {
+    background-color: var(--selection);
+}
+
+.actions .search-input:hover,
+.actions .search-input:active,
+.actions .search-input:focus {
+    outline: none;
+}
+
+.actions .btn-add-container {
+    text-align: center;  
+}
+
+.actions .btn-add-container .btn-add {
+    background: transparent;
+    font-weight: bold;
+    font-family: var(--body-font);
+    border-radius: 3px;
+    padding: 10px;
+    border: 1px solid var(--text);
+    color: var(--text);
+    transition: all 0.3s ease-in-out;
+}
+
+.actions .btn-add-container .btn-add:hover,
+.actions .btn-add-container .btn-add:focus {
+    outline: none;
+    cursor: pointer;
+    color: var(--secondary);
+    box-shadow: 1px 1px 10px var(--normal-shadow);
+    border-color: var(--secondary);
+    transform: scale(1.03);
+}
+
+.actions .details {
+    padding: 5px;
+    font-weight: bold;
+    font-family: var(--body-font);
+    font-size: 11px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 992px) {
+    
+    .actions {
+        text-align: center;
+    }
+
+    .actions input {
+        width: 100%;
+    }
+
+}

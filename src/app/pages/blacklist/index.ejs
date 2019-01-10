@@ -3,37 +3,59 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1" />
     <meta name="description" content="Consulta e manutenção de cpfs na blacklist" />
     <meta name="theme-color" content="#FFFFFF" />
     
     <title>Consulta de Cpfs</title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Open+Sans:400,700" rel="stylesheet">
+    
+    <!-- Base CSS -->
+    <link href="/css/base/root.css" rel="stylesheet" />
+    <link href="/css/base/reset.css" rel="stylesheet" />
+
+    <!-- Blacklist CSS -->
+    <link href="/css/blacklist/paper.css" rel="stylesheet" />
+    <link href="/css/blacklist/header.css" rel="stylesheet" />
+    <link href="/css/blacklist/actions.css" rel="stylesheet" />
+    <link href="/css/blacklist/search-result.css" rel="stylesheet" />
+
 </head>
 
 <body>
 
-    <div class="container">
+    <main class="paper">
 
-        <div class="header">
-            <h1>Blacklist atual</h1>
-            <p>
+        <header class="header">
+            <h1 class="title" >Blacklist atual</h1>
+            <p class="subtitle" >
                 Segue a lista:
             </p>
-        </div>
+        </header>
 
-        <div class="container-search">
-            <input id="txtCpf" type="text" onkeydown="processData(this);" placeholder="Digite aqui, para procurar um CNPJ específico." />
-            <button id="btnAdd">Adicionar</button>
-            <p class="ps">
+        <aside class="actions">
+            <input id="txtSearch" 
+                   type="text" 
+                   class="search-input" 
+                   onkeydown="processData(this);" 
+                   title='Digite algo aqui para fazer uma pesquisa, ou adicionar um "CPF".' 
+                   placeholder='Digite algo aqui para fazer uma pesquisa, ou adicionar um "CPF".' />
+            <br />
+            <br />
+            <p class="btn-add-container" >
+                <button id="btnAdd" class="btn-add" >Adicionar</button>
+            </p>
+            <p class="details">
                 *** PS: na blacklist :) ***
             </p>
-        </div>
+        </aside>
 
-        <ul id="results" class="results">
+        <ul id="results" class="search-result">
         </ul>
 
-    </div>
+    </main>
 
 </body>
 
