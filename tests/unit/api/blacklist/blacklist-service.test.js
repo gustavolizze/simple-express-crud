@@ -1,6 +1,7 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
 const { BlacklistService } = require('./../../../../src/api/blacklist/blacklist-service');
+const { ConflictError, BadRequestError, InternalError } = require('./../../../../src/shared/errors');
 
 describe('Testes unitários com o "blacklist-service.js" ', () => {
 
@@ -27,7 +28,7 @@ describe('Testes unitários com o "blacklist-service.js" ', () => {
         it('Não deve adicionar um cpf inválido', () => {
             const service = new BlacklistService();
             const tryAdd = () => service.add('073.890.760-00');
-            expect(tryAdd).to.throw(Error, 'Informe um cpf válido');
+            expect(tryAdd).to.throw(BadRequestError, 'Informe um cpf válido');
         });
 
         it('Não deve adicionar dois CPFs iguais', () => {
@@ -40,7 +41,7 @@ describe('Testes unitários com o "blacklist-service.js" ', () => {
                 masked: '073.890.760-03' 
             }]);
 
-            expect(tryAdd).to.throw(Error, 'Este CPF já foi adicionado.');
+            expect(tryAdd).to.throw(ConflictError, 'Este CPF já foi adicionado.');
         });
     });
 
@@ -58,14 +59,14 @@ describe('Testes unitários com o "blacklist-service.js" ', () => {
             const service  = new BlacklistService();
             const tryRemove = () => service.remove('073.890.760-00');
 
-            expect(tryRemove).to.throw(Error, 'Informe um cpf válido');
+            expect(tryRemove).to.throw(BadRequestError, 'Informe um cpf válido');
         }); 
 
         it('Deve retornar um erro caso não exista nenhum cpf na blacklist', () => {
             const service = new BlacklistService();
             const tryRemove = () => service.remove('073.890.760-03');
 
-            expect(tryRemove).to.throw(Error, 'Não existe nenhum cpf para ser removido');
+            expect(tryRemove).to.throw(InternalError, 'Não existe nenhum cpf para ser removido');
         });
 
         it('Deve retornar um erro em caso de cpf não existente', () => {
@@ -73,7 +74,7 @@ describe('Testes unitários com o "blacklist-service.js" ', () => {
             service.add('372.159.060-00');
             const tryRemove = () => service.remove('073.890.760-03');
 
-            expect(tryRemove).to.throw(Error, 'O Cpf informado não está na blacklist');
+            expect(tryRemove).to.throw(BadRequestError, 'O Cpf informado não está na blacklist');
         });
 
     });

@@ -5,6 +5,11 @@ const {
 const {
     CPF
 } = require('./../../shared/models/cpf');
+const {
+    BadRequestError,
+    InternalError,
+    ConflictError
+} = require('./../../shared/errors');
 
 class BlacklistService {
 
@@ -17,22 +22,22 @@ class BlacklistService {
         const cpfHasAlreadyBeenRegistered = this.getByCpfNumber(cpf.number)[0];
 
         if (cpfHasAlreadyBeenRegistered) 
-            throw new Error('Este CPF já foi adicionado.');
+            throw new ConflictError('Este CPF já foi adicionado.');
 
         this._blacklist.push(cpf);
     }
 
     remove(cpfNumber) {
         if (isValidCpf(cpfNumber) === false) 
-            throw new Error('Informe um cpf válido');
+            throw new BadRequestError('Informe um cpf válido');
             
         if (!this._blacklist.length) 
-            throw new Error('Não existe nenhum cpf para ser removido');
+            throw new InternalError('Não existe nenhum cpf para ser removido');
         
         let cpf = this.getByCpfNumber(cpfNumber)[0];
 
         if (!cpf) 
-            throw new Error('O Cpf informado não está na blacklist.');
+            throw new BadRequestError('O Cpf informado não está na blacklist.');
 
         this._blacklist = this._blacklist.filter((item) => (item.number !== cpf.number)) || [];
     }
@@ -43,7 +48,7 @@ class BlacklistService {
         const hasBlacklist = this._blacklist.length > 0;
                 
         if (isValidSearch === false)
-            throw new Error('Informe um cpf para a pesquisa');
+            throw new BadRequestError('Informe um cpf para a pesquisa');
 
         if (hasBlacklist === false)
             return []; 
