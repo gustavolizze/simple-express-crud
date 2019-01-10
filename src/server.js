@@ -7,8 +7,8 @@ const {
     configureErrorHandler
 } = require('./config');
 
-configureMiddlewares(app);
 configureExpress(app);
+configureMiddlewares(app);
 configureHealthCheck(app);
 configureErrorHandler(app);
 

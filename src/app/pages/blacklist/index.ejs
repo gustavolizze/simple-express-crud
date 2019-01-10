@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Consulta e manutenção de cpfs na blacklist" />
+    <meta name="theme-color" content="#FFFFFF" />
+    
+    <title>Consulta de Cpfs</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Blacklist atual</h1>
+            <p>
+                Segue a lista:
+            </p>
+        </div>
+
+        <div class="container-search">
+            <input id="txtCpf" type="text" onkeydown="processData(this);" placeholder="Digite aqui, para procurar um CNPJ específico." />
+            <button id="btnAdd">Adicionar</button>
+            <p class="ps">
+                *** PS: na blacklist :) ***
+            </p>
+        </div>
+
+        <ul id="results" class="results">
+        </ul>
+
+    </div>
+
+</body>
+
+</html>
