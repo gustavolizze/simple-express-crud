@@ -2,6 +2,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const compression = require('compression');
+const logger = require('express-pino-logger')();
 
 const shouldCompress = (req, res) => {
     return (req.headers['x-no-compression'] ? 
@@ -9,6 +10,7 @@ const shouldCompress = (req, res) => {
 }
 
 module.exports = (app) => {
+    app.use(logger);
     app.use(cors());
     app.use(helmet());
     app.use(bodyParser.json());

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
-    "start:watch": "node src/server.js",
+    "start:watch": "node src/server.js | pino-pretty",
     "test:unit": "mocha -b -w --recursive ./tests/unit/setup.js"
   },
   "author": "",
@@ -25,6 +25,8 @@
     "compression": "^1.7.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-pino-logger": "^4.0.0",
+    "pino-pretty": "^2.5.0",
     "helmet": "^3.15.0"
   }
 }
