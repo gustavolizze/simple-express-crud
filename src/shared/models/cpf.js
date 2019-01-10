@@ -1,10 +1,10 @@
 const { isValidCpf, removeMasks } = require('./../helpers/cpf-validator'); 
-
+const { BadRequestError } = require('./../errors');
 class CPF {
 
     constructor(cpfNumber) {
         if (isValidCpf(cpfNumber) === false) 
-            throw new Error('Informe um cpf válido');
+            throw new BadRequestError('Informe um cpf válido');
 
         this.number = removeMasks(cpfNumber);
         this.masked = this.number
