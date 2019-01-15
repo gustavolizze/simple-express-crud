@@ -22,6 +22,7 @@
     <link href="/css/blacklist/actions.css" rel="stylesheet" />
     <link href="/css/blacklist/search-result.css" rel="stylesheet" />
 
+
 </head>
 
 <body>
@@ -36,27 +37,50 @@
         </header>
 
         <aside class="actions">
-            <input id="txtSearch" 
+            <input id="search-input" 
                    type="text" 
                    class="search-input" 
-                   onkeydown="processData(this);" 
+                   onkeydown="processSearch(this);" 
                    title='Digite algo aqui para fazer uma pesquisa, ou adicionar um "CPF".' 
                    placeholder='Digite algo aqui para fazer uma pesquisa, ou adicionar um "CPF".' />
             <br />
             <br />
             <p class="btn-add-container" >
-                <button id="btnAdd" class="btn-add" >Adicionar</button>
+                <button id="btn-add" class="btn-add" >Adicionar</button>
             </p>
             <p class="details">
                 *** PS: na blacklist :) ***
             </p>
         </aside>
 
-        <ul id="results" class="search-result">
+        <ul id="search-result" class="search-result">
         </ul>
 
     </main>
 
+    <!-- Lib -->
+    <script type="text/javascript" src="/lib/sweet-alert/sweetalert.min.js" ></script>
+
+    <!-- Base | Helpers -->
+    <script type="text/javascript" src="/js/helpers/mask.js" ></script>
+    <script type="text/javascript" src="/js/helpers/utils.js" ></script>
+    <script type="text/javascript" src="/js/helpers/alert.js" ></script>
+
+    <!-- Blacklist -->
+    <script type="text/javascript" src="/js/blacklist/services.js" ></script>
+    <script type="text/javascript" src="/js/blacklist/binds.js" ></script>
+
+    <script>
+        ready(function () {
+            var addDebounceInstance = debounce();
+            
+            document.getElementById('btn-add').addEventListener('click', function () {
+                addDebounceInstance.on(addNewCpf);
+            });
+
+            processSearch(document.getElementById('search-input'));
+        });
+    </script>
 </body>
 
 </html>
