@@ -6,16 +6,20 @@
   "scripts": {
     "start": "nodemon",
     "start:watch": "node src/server.js | pino-pretty",
-    "test:unit": "mocha -b -w --recursive ./tests/unit/setup.js"
+    "test:unit": "mocha -b -w --recursive ./tests/unit/setup.js",
+    "test:acceptance": "nodemon --config \"nodemon.test.json\" "
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
+    "codeceptjs": "^2.0.3",
     "colors": "^1.3.3",
+    "cross-env": "^5.2.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.9",
+    "puppeteer": "^1.11.0",
     "sinon": "^7.2.2",
     "sinon-express-mock": "^2.1.0",
     "supertest": "^3.3.0"

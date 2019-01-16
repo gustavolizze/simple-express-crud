@@ -14,7 +14,9 @@ const shouldCompress = (req, res) => {
 }
 
 module.exports = (app) => {
-    app.use(logger);
+    if(!process.env.DISABLE_LOGGER)
+        app.use(logger);
+    
     app.use(cors());
     app.use(helmet());
     app.use(bodyParser.json());

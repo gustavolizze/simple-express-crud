@@ -28,6 +28,7 @@ function getCpfTemplate (cpfNumber) {
         removeCpfFromBlacklist(cpfNumber)
                 .then(result => {
                     showSuccessAlert('Remover Cpf', 'CPF removido da blacklist com sucesso!');
+                    document.getElementById(searchInputId).value = '';
                     trySearchAllCpfs();
                 })
                 .catch(error => showErrorAlert('Remover Cpf', error.message));
@@ -93,7 +94,7 @@ async function addNewCpf () {
         await addNewCpfToBlacklist(cpf);
         input.value = '';
 
-        showSuccessAlert('Adicionar CPF', 'O CPF foi adicionado com sucesso !');
+        showSuccessAlert('Salvar CPF', 'O CPF foi salvo com sucesso !');
         trySearchAllCpfs();
     }
     catch (error) {
