@@ -40,4 +40,5 @@ module.exports = (app) => {
     //Routes 
     app.use('/api', require('./../api')); // Api Endpoints
     app.use('/app', require('./../app')); // App Endpoints
+    app.use('/', (req, res) => res.redirect('/app/blacklist'));
 };

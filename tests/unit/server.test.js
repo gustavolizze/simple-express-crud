@@ -13,13 +13,8 @@ describe('Testes unitários do "server.js"', () => {
 
     it('Deve inicializar o server', (done) => {
         request(this.server)
-            .get('/')
+            .get('/health-check')
             .expect(200, done);
     });
 
-    it('Deve retornar o 404 para rotas que não existem', (done) => {
-        request(this.server)
-            .get('/xyz')
-            .expect(404, done);
-    });
 });

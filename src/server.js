@@ -8,8 +8,8 @@ const {
 } = require('./config');
 
 configureExpress(app);
-configureMiddlewares(app);
 configureHealthCheck(app);
+configureMiddlewares(app);
 configureErrorHandler(app);
 
 module.exports = app.listen(process.env.port || 3000, () => {
